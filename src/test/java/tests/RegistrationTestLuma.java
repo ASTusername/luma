@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import pages.RegisterPage;
 import runner.BaseTest;
 
-public class RegistrationTestLuma extends BaseTest {
+public class RegistrationTestLuma extends BaseTest { // что-то
     RegisterPage registerPage = new RegisterPage();
     TestData testData = new TestData();
 
