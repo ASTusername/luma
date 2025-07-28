@@ -14,7 +14,7 @@ public class RegisterPage {
     private SelenideElement submitButton = $("button.action.submit.primary");
 
     public RegisterPage openPage() {
-        open("https://magento.softwaretestingboard.com/customer/account/create/");
+        open("customer/account/create/");
         return this;
     }
 
