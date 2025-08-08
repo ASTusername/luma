@@ -23,6 +23,11 @@ public abstract class BaseTest {
         // Проверяем системное свойство
         String remoteDriver = System.getProperty("remoteDriver");
         if ("selenoid".equalsIgnoreCase(remoteDriver)) {
+            System.out.println("---------------");
+            System.out.println("---------------");
+            System.out.println("Hello");
+            System.out.println("---------------");
+            System.out.println("---------------");
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -31,6 +36,13 @@ public abstract class BaseTest {
                     "enableVideo", true
             ));
             Configuration.browserCapabilities = capabilities;
+        }
+        else {
+            System.out.println("---------------");
+            System.out.println("---------------");
+            System.out.println("GoodBuy");
+            System.out.println("---------------");
+            System.out.println("---------------");
         }
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

@@ -38,6 +38,7 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperty "remoteDriver", System.getProperty("remoteDriver")
 
     testLogging {
         lifecycle {
@@ -51,4 +52,5 @@ task registration_test(type: Test) {
     useJUnitPlatform {
         includeTags("registration")
     }
+    systemProperty "remoteDriver", System.getProperty("remoteDriver")
 }

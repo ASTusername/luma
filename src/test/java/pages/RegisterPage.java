@@ -65,6 +65,11 @@ public class RegisterPage {
     public RegisterPage acceptCookies() {
         String remoteDriver = System.getProperty("remoteDriver");
         if ("selenoid".equalsIgnoreCase(remoteDriver)) {
+            System.out.println("---------------");
+            System.out.println("---------------");
+            System.out.println("Hello111");
+            System.out.println("---------------");
+            System.out.println("---------------");
             // Попробуй сначала по тексту кнопки
             $x("//button[contains(., 'Consent')]").shouldBe(visible).click();
 
