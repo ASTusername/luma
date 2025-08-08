@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.11.2'
+    id 'checkstyle'
 }
 
 java {
@@ -19,6 +20,18 @@ allure {
                 adapterVersion.set("2.19.0")
             }
         }
+    }
+}
+
+checkstyle {
+    configFile = file("config/checkstyle/checkstyle.xml")
+    toolVersion = "10.12.3"
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.required = false
+        html.required = true
     }
 }
 
