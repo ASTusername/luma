@@ -63,11 +63,14 @@ public class RegisterPage {
     }
 
     public RegisterPage acceptCookies() {
-        // Попробуй сначала по тексту кнопки
-        $x("//button[contains(., 'Consent')]").shouldBe(visible).click();
+        String remoteDriver = System.getProperty("remoteDriver");
+        if ("selenoid".equalsIgnoreCase(remoteDriver)) {
+            // Попробуй сначала по тексту кнопки
+            $x("//button[contains(., 'Consent')]").shouldBe(visible).click();
 
-        // Если не сработает — можно по роли и тексту
-        // $$("button").findBy(text("Consent")).click();
+            // Если не сработает — можно по роли и тексту
+            // $$("button").findBy(text("Consent")).click();
+        }
         return this;
     }
 }
