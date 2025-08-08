@@ -11,6 +11,7 @@ import runner.BaseTest;
 public class RegistrationTestLuma extends BaseTest { // что-то
     RegisterPage registerPage = new RegisterPage();
     TestData testData = new TestData();
+
         @Test
         @Owner("Denis Nikitin | tg: @nikk113")
         @Severity(SeverityLevel.NORMAL)
