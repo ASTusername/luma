@@ -4,10 +4,12 @@ import data.TestData;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegisterPage;
 import runner.BaseTest;
 
+@Tag("registration")
 public class RegistrationTestLuma extends BaseTest { // что-то
     RegisterPage registerPage = new RegisterPage();
     TestData testData = new TestData();
