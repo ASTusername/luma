@@ -1,15 +1,18 @@
 package tests;
 
 import data.TestData;
+import helpers.ConsoleTestLogger;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.CustomerLoginPage;
 import pages.RecoveryPassPage;
 import pages.RegisterPage;
 import runner.BaseTest;
 
+@ExtendWith(ConsoleTestLogger.class)
 public class RecoveryPassTest extends BaseTest { // что-то
     RecoveryPassPage recoveryPage = new RecoveryPassPage();
     CustomerLoginPage customerLoginPage = new CustomerLoginPage();
