@@ -4,11 +4,11 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import helpers.ConsoleTestLogger;
 
 import java.util.Map;
 
@@ -42,6 +42,25 @@ public abstract class BaseTest {
         }
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
+    @BeforeEach
+    void logTestStart(TestInfo info) {
+        String className = info.getTestClass()
+                .map(Class::getSimpleName)
+                .orElse("UnknownClass");
+
+        String methodName = info.getTestMethod()
+                .map(method -> method.getName() + "()")
+                .orElse("UnknownTest");
+
+        ConsoleTestLogger.logStart(className + "." + methodName);
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("----- Running afterAll in BaseTest -----");
+        helpers.ConsoleTestLogger.printSummary();
     }
 
     @AfterEach

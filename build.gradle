@@ -39,6 +39,7 @@ dependencies {
 tasks.withType(Test) {
     useJUnitPlatform()
     systemProperty "remoteDriver", System.getProperty("remoteDriver")
+    systemProperty "file.encoding", "UTF-8"
 
     testLogging {
         lifecycle {
@@ -53,4 +54,5 @@ task registration_test(type: Test) {
         includeTags("registration")
     }
     systemProperty "remoteDriver", System.getProperty("remoteDriver")
+    systemProperty "file.encoding", "UTF-8"
 }
