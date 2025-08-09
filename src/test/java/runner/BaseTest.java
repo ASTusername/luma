@@ -7,6 +7,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -16,6 +18,8 @@ public abstract class BaseTest {
 
     @BeforeAll
     static void beforeAll() {
+        Logger logger = LoggerFactory.getLogger(BaseTest.class);
+
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://magento.softwaretestingboard.com/";
         Configuration.pageLoadStrategy = "eager";
@@ -23,11 +27,7 @@ public abstract class BaseTest {
         // Проверяем системное свойство
         String remoteDriver = System.getProperty("remoteDriver");
         if ("selenoid".equalsIgnoreCase(remoteDriver)) {
-            System.out.println("---------------");
-            System.out.println("---------------");
-            System.out.println("Hello");
-            System.out.println("---------------");
-            System.out.println("---------------");
+            logger.info("========== Remote driver detected ==========");
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -38,11 +38,7 @@ public abstract class BaseTest {
             Configuration.browserCapabilities = capabilities;
         }
         else {
-            System.out.println("---------------");
-            System.out.println("---------------");
-            System.out.println("GoodBuy");
-            System.out.println("---------------");
-            System.out.println("---------------");
+            logger.info("========== No remote driver detected ==========");
         }
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

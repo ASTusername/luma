@@ -3,13 +3,16 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import runner.BaseTest;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 
 public class RegisterPage {
-
+    Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private SelenideElement firstNameInput = $("#firstname");
     private SelenideElement lastNameInput = $("#lastname");
     private SelenideElement emailInput = $("#email_address");
@@ -65,11 +68,7 @@ public class RegisterPage {
     public RegisterPage acceptCookies() {
         String remoteDriver = System.getProperty("remoteDriver");
         if ("selenoid".equalsIgnoreCase(remoteDriver)) {
-            System.out.println("---------------");
-            System.out.println("---------------");
-            System.out.println("Hello111");
-            System.out.println("---------------");
-            System.out.println("---------------");
+            logger.info("========== acceptCookies done ==========");
             // Попробуй сначала по тексту кнопки
             $x("//button[contains(., 'Consent')]").shouldBe(visible).click();
 
