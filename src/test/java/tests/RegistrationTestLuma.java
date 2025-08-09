@@ -4,13 +4,19 @@ import data.TestData;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegisterPage;
 import runner.BaseTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import helpers.ConsoleTestLogger;
 
+@ExtendWith(ConsoleTestLogger.class)
+@Tag("registration")
 public class RegistrationTestLuma extends BaseTest { // что-то
     RegisterPage registerPage = new RegisterPage();
     TestData testData = new TestData();
+
         @Test
         @Owner("Denis Nikitin | tg: @nikk113")
         @Severity(SeverityLevel.NORMAL)

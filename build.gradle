@@ -36,6 +36,23 @@ dependencies {
     )
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperty "remoteDriver", System.getProperty("remoteDriver")
+    systemProperty "file.encoding", "UTF-8"
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task registration_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("registration")
+    }
+    systemProperty "remoteDriver", System.getProperty("remoteDriver")
+    systemProperty "file.encoding", "UTF-8"
 }
